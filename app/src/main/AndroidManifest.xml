@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -13,9 +14,11 @@
         android:theme="@style/Theme.Pizzaria"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".Menu"
             android:exported="false" />
-
         <activity
             android:name=".ThaksYouScreem"
             android:exported="false" />
@@ -24,8 +27,8 @@
             android:exported="false" />
         <activity
             android:name=".ProductDetails"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.SplashActivity"
             android:exported="true">
@@ -35,7 +38,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.pizzaria.ui.CarrinhoActivity" />
+        <activity android:name=".ui.CarrinhoActivity" />
     </application>
 
 </manifest>
