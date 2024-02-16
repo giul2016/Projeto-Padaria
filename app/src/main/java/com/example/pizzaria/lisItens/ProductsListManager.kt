@@ -64,16 +64,16 @@ class ProductsListManager {
     private fun createAssadosList(): MutableList<Produto> {
         // Adicione produtos Chicken conforme necessário
         return mutableListOf(
-            Produto(R.drawable.assadosfrango, "Frango assado", 10.00, "Assados","Frango assado"),
-            Produto(R.drawable.assadoslinguica, "Calabresa assada", 8.00, "Assados","Calabresa assada"),
-            Produto(R.drawable.assadocupim, "Cupim assado", 10.00, "Assados ","Cupim assado"),
-            Produto(R.drawable.assadoscostela, "Costela assada", 8.00, "Assados","Costela assada"),
-            Produto(R.drawable.assadosbatatinha, "Batata assada", 10.00, "Assados","Batata assada"),
-            Produto(R.drawable.assadosarroz, "Arroz a grega", 8.00, "Assados","Arroz a grega"),
-            Produto(R.drawable.assadosfarofa, "Farofa gourmeet", 10.00, "Assados","Farofa especialmente temperada"),
-            Produto(R.drawable.assadosvinagrete, "Vinagrete", 8.00, "Assados","Salada de tomates, cebolas, salcinha e temperos"),
-            Produto(R.drawable.assadopao, "Pão de alho", 8.00, "Assados","Pão com creme de alho assado"),
-            Produto(R.drawable.assadosmaionese, "Maionese gourmet", 8.00, "Assados","Maionese com especiarias"),
+            Produto(R.drawable.assarfrango, "Frango assado", 10.00, "Assados","Frango assado"),
+            Produto(R.drawable.assarbatata, "Batata assada", 8.00, "Assados","Batata assada"),
+            Produto(R.drawable.assarcupim, "Cupim assado", 10.00, "Assados ","Cupim assado"),
+            Produto(R.drawable.assarcostela, "Costela assada", 8.00, "Assados","Costela assada"),
+            Produto(R.drawable.assarlingui, "Linguiça assada", 10.00, "Assados","Linguiça assada"),
+            Produto(R.drawable.assararroz, "Arroz a grega", 8.00, "Assados","Arroz a grega"),
+            Produto(R.drawable.assarfarofa, "Farofa gourmeet", 10.00, "Assados","Farofa especialmente temperada"),
+            Produto(R.drawable.assarvinagre, "Vinagrete", 8.00, "Assados","Salada de tomates, cebolas, salcinha e temperos"),
+            Produto(R.drawable.assarpao, "Pão de alho", 8.00, "Assados","Pão com creme de alho assado"),
+            Produto(R.drawable.assarmaionese, "Maionese gourmet", 8.00, "Assados","Maionese com especiarias"),
             // ...
         )
     }
@@ -130,16 +130,16 @@ class ProductsListManager {
     private fun createPaesList(): MutableList<Produto> {
         // Adicione produtos Pizza conforme necessário
         return mutableListOf(
-            Produto(R.drawable.paofrances1, "Pão francês", 5.00, "Pães","Pão francês tradicional"),
-            Produto(R.drawable.paobaguete5, "Baguete", 90.00, "Pães","Pão do tipo baguetinho"),
-            Produto(R.drawable.paobanha8, "Pão de bahha", 5.00, "Pães","Pão de banha macio"),
-            Produto(R.drawable.paobengala10, "Bengala", 90.00, "Pães","Pão de bengala"),
-            Produto(R.drawable.paocaseiro9, "Pão caseiro", 5.00, "Pães","Pão de forma do tipo caseiro"),
-            Produto(R.drawable.paodeforma4, "Pão de forma", 90.00, "Pães","Pão tradicional de forma"),
-            Produto(R.drawable.paodeleite2, "Pão de leite", 90.00, "Pães","Pão de leite macio"),
-            Produto(R.drawable.paointegral3, "Pão integral", 90.00, "Pães","Pão integral sem glútem"),
-            Produto(R.drawable.paoitaliano6, "Pão italiano", 90.00, "Pães","Pão do tipo italiano casca grossa"),
-            Produto(R.drawable.paomilho7, "Pão de milho", 90.00, "Pães","Pão de milho"),
+            Produto(R.drawable.paofrances, "Pão francês", 5.00, "Pães","Pão francês tradicional"),
+            Produto(R.drawable.paovcarteira, "Baguete", 90.00, "Pães","Pão do tipo baguetinho"),
+            Produto(R.drawable.paofrios, "Pão de frios", 5.00, "Pães","Pão recheado de frios"),
+            Produto(R.drawable.paobengala, "Bengala", 90.00, "Pães","Pão de bengala"),
+            Produto(R.drawable.paocaseiro, "Pão caseiro", 5.00, "Pães","Pão de forma do tipo caseiro"),
+            Produto(R.drawable.paointegral, "Pão Integral", 90.00, "Pães","Pão integral de forma"),
+            Produto(R.drawable.paobanha, "Pão de banha", 90.00, "Pães","Pão de banha macio"),
+            Produto(R.drawable.paointegral, "Pão integral", 90.00, "Pães","Pão integral sem glútem"),
+            Produto(R.drawable.paoitaliano, "Pão italiano", 90.00, "Pães","Pão do tipo italiano casca grossa"),
+            Produto(R.drawable.paomilho, "Pão de milho", 90.00, "Pães","Pão de milho"),
             // ...
 
 
@@ -160,32 +160,32 @@ class ProductsListManager {
     private fun createOtherList(): MutableList<Produto> {
         // Adicione produtos Other conforme necessário
         return mutableListOf(
-            Produto(R.drawable.esfihaqueijo, "Esfiha de queijo", 10.00, "Esfihas","Esfiha com queijo"),
-            Produto(R.drawable.esfihacatupiry, "Esfiha de catupiry", 8.00, "Esfihas","Esfiha com queijo catupiry"),
-            Produto(R.drawable.esfihamilhocatu, "Milho catupiry", 10.00, "Esfiha ","Esfiha com queijo catupiry e milho"),
-            Produto(R.drawable.esfihafrango, "Esfiha de frango", 8.00, "Esfihas","Esfiha com frango desfiado"),
-            Produto(R.drawable.esfihamoda, "Esfiha a moda", 10.00, "Esfihas","Esfiha de mussarela com bacom"),
-            Produto(R.drawable.esfihamoranchoco, "Choco Morango", 8.00, "Esfihas","Esfiha de chocolate com morango"),
-            Produto(R.drawable.esfihalombo, "Esfiha de lombo", 10.00, "Esfihas","Esfiha de lombo"),
-            Produto(R.drawable.esfihalomboqueijo, "Lombo com queijo", 8.00, "Esfihas","Esfiha de Lombo com queijo mussarela"),
-            Produto(R.drawable.esfihapalmito, "Palmito", 8.00, "Esfihas","Esfiha de palmito com queijo mussarela"),
-            Produto(R.drawable.esfihsvegetariana, "Vegetariana", 8.00, "Esfihas","Esfiha de brócolis com queijo ricota"),
+            Produto(R.drawable.esf2, "Esfiha de queijo", 10.00, "Esfihas","Esfiha com queijo"),
+            Produto(R.drawable.esf6, "Esfiha de catupiry", 8.00, "Esfihas","Esfiha com queijo catupiry"),
+            Produto(R.drawable.esf5, "Milho catupiry", 10.00, "Esfiha ","Esfiha com queijo catupiry e milho"),
+            Produto(R.drawable.esf7, "Esfiha de frango", 8.00, "Esfihas","Esfiha com frango desfiado"),
+            Produto(R.drawable.esf3, "Esfiha de Lombo", 10.00, "Esfihas","Esfiha de lombo"),
+            Produto(R.drawable.esf6, "Choco Morango", 8.00, "Esfihas","Esfiha de chocolate com morango"),
+            Produto(R.drawable.esf4, "Esfiha de Calabresa", 10.00, "Esfihas","Esfiha de Calabresa"),
+            Produto(R.drawable.esf8, "Atum", 8.00, "Esfihas","Esfiha de atum com cebola"),
+            Produto(R.drawable.esf9, "BananaChoco", 8.00, "Esfihas","Esfiha de banana com chocolate"),
+            Produto(R.drawable.esf1, "Queijo ricota", 8.00, "Esfihas","Esfiha de queijo ricota"),
             // ...
         )
     }
     private fun createEsfihaList(): MutableList<Produto> {
         // Adicione produtos Other conforme necessário
         return mutableListOf(
-            Produto(R.drawable.esfihaqueijo, "Esfiha de queijo", 10.00, "Esfihas","Esfiha com queijo"),
-            Produto(R.drawable.esfihacatupiry, "Esfiha de catupiry", 8.00, "Esfihas","Esfiha com queijo catupiry"),
-            Produto(R.drawable.esfihamilhocatu, "Milho catupiry", 10.00, "Esfiha ","Esfiha com queijo catupiry e milho"),
-            Produto(R.drawable.esfihafrango, "Esfiha de frango", 8.00, "Esfihas","Esfiha com frango desfiado"),
-            Produto(R.drawable.esfihamoda, "Esfiha a moda", 10.00, "Esfihas","Esfiha de mussarela com bacom"),
-            Produto(R.drawable.esfihamoranchoco, "Choco Morango", 8.00, "Esfihas","Esfiha de chocolate com morango"),
-            Produto(R.drawable.esfihalombo, "Esfiha de lombo", 10.00, "Esfihas","Esfiha de lombo"),
-            Produto(R.drawable.esfihalomboqueijo, "Lombo com queijo", 8.00, "Esfihas","Esfiha de Lombo com queijo mussarela"),
-            Produto(R.drawable.esfihapalmito, "Palmito", 8.00, "Esfihas","Esfiha de palmito com queijo mussarela"),
-            Produto(R.drawable.esfihsvegetariana, "Vegetariana", 8.00, "Esfihas","Esfiha de brócolis com queijo ricota"),
+            Produto(R.drawable.esf2, "Esfiha de queijo", 10.00, "Esfihas","Esfiha com queijo"),
+            Produto(R.drawable.esf6, "Esfiha de catupiry", 8.00, "Esfihas","Esfiha com queijo catupiry"),
+            Produto(R.drawable.esf5, "Milho catupiry", 10.00, "Esfiha ","Esfiha com queijo catupiry e milho"),
+            Produto(R.drawable.esf7, "Esfiha de frango", 8.00, "Esfihas","Esfiha com frango desfiado"),
+            Produto(R.drawable.esf3, "Esfiha de Lombo", 10.00, "Esfihas","Esfiha de lombo"),
+            Produto(R.drawable.esf6, "Choco Morango", 8.00, "Esfihas","Esfiha de chocolate com morango"),
+            Produto(R.drawable.esf4, "Esfiha de Calabresa", 10.00, "Esfihas","Esfiha de Calabresa"),
+            Produto(R.drawable.esf8, "Atum", 8.00, "Esfihas","Esfiha de atum com cebola"),
+            Produto(R.drawable.esf9, "BananaChoco", 8.00, "Esfihas","Esfiha de banana com chocolate"),
+            Produto(R.drawable.esf1, "Queijo ricota", 8.00, "Esfihas","Esfiha de queijo ricota"),
             // ...
         )
     }
