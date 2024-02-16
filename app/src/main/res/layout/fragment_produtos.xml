@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="Search"
+        android:background="@color/white"
+        android:layout_margin="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Categorias"
+                    android:padding="3dp"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="15sp"
+                    android:background="@drawable/bg_button_disabled"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnPizza"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pizza"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="18sp"
+                    android:background="@drawable/bg_button_disabled"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnEsfiha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Esfiha"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="18sp"
+                    android:background="@drawable/bg_button_disabled"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnPaes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pães"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="18sp"
+                    android:background="@drawable/bg_button_disabled"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSalgados"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Salgados"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="15sp"
+                    android:padding="3dp"
+                    android:background="@drawable/bg_button_disabled"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnLanches"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lanches"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="18sp"
+                    android:background="@drawable/bg_button_disabled"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnFrios"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Frios"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="18sp"
+                    android:background="@drawable/bg_button_disabled"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnAssados"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Assados"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="18sp"
+                    android:background="@drawable/bg_button_disabled"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnKebab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kebab"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="18sp"
+                    android:background="@drawable/bg_button_disabled"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewProdutos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

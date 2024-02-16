@@ -1,0 +1,4 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/verde"/>    <!-- Cor de fundo do Snackbar -->
+    <corners android:radius="0dp" /> <!-- Define cantos quadrados -->
+</shape>

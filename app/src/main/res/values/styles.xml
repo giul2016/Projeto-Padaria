@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MenuLabelsStyle">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="SnackbarStyle" parent="Widget.Design.Snackbar">
+        <item name="android:background">@drawable/snackbar_background</item>
+    </style>
+
+
+</resources>

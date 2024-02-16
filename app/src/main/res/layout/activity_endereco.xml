@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bckendereco"
+    android:orientation="horizontal"
+    tools:context=".EnderecoActivity">
+
+    <EditText
+        android:id="@+id/editNumer"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/white"
+        android:hint="Num:"
+        android:padding="2dp"
+        android:paddingStart="8dp"
+        android:textColorHint="@color/marrom2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toEndOf="@+id/editTextRua"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextComplemento"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/white"
+        android:hint="Comp:"
+        android:padding="2dp"
+        android:paddingStart="8dp"
+        android:textColorHint="@color/marrom2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTextBairro"
+        app:layout_constraintTop_toBottomOf="@+id/editNumer" />
+
+    <EditText
+        android:id="@+id/editTextUf"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/white"
+        android:hint="UF::"
+        android:padding="2dp"
+        android:paddingStart="8dp"
+        android:textColorHint="@color/marrom2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTextCidade"
+        app:layout_constraintTop_toBottomOf="@+id/editTextComplemento" />
+
+    <EditText
+        android:id="@+id/editTextRua"
+        android:layout_width="280dp"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:layout_marginStart="16dp"
+        android:hint="Rua:"
+        android:padding="2dp"
+        android:paddingStart="8dp"
+        android:textColorHint="@color/marrom2"
+        android:layout_marginTop="80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextBairro"
+        android:layout_width="200dp"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:hint="Bairro:"
+        android:layout_marginTop="3dp"
+        android:layout_marginStart="16dp"
+        android:padding="2dp"
+        android:paddingStart="8dp"
+        android:textColorHint="@color/marrom2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextRua" />
+
+    <EditText
+        android:id="@+id/editTextCidade"
+        android:layout_width="200dp"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="3dp"
+        android:hint="Cidade:"
+        android:padding="2dp"
+        android:paddingStart="8dp"
+        android:textColorHint="@color/marrom2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextBairro" />
+
+    <Button
+        android:id="@+id/btnCadastrarEndereço"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="22dp"
+        android:backgroundTint="@color/marrom5"
+        android:text="Faça seu pedido"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

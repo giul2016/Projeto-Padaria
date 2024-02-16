@@ -1,0 +1,15 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Pizzaria" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/marrom1</item>
+        <item name="colorOnPrimary">@color/marrom2</item>
+        <item name="colorPrimaryVariant">@color/white</item>
+
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorSecondary">@color/marrom1</item>
+        <item name="colorOnSecondary">@color/marrom2</item>
+        <item name="colorSecondaryVariant">@color/white</item>
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    </style>
+</resources>

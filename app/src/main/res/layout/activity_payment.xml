@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/light_gray"
+    tools:context=".Payment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@android:color/white"
+        app:title="Finalizar Pedido"/>
+
+    <EditText
+        android:id="@+id/editPix"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Cell phone or email"
+        android:background="@color/white"
+        android:padding="15dp"
+        android:layout_margin="20sp"
+        android:maxLines="1"
+        android:visibility="gone"
+        android:inputType="textEmailAddress"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pedido:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/txtTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/dark_gray"
+        android:text= "Produto"
+        android:textSize="18sp"
+        android:textStyle="bold"
+       android:layout_margin="10dp"
+        android:layout_gravity="start"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Observação"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_margin="10dp"/>
+
+    <EditText
+        android:id="@+id/editObservacao"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:gravity="top|start"
+        android:background="@drawable/bg_edit_text"
+        android:enabled="true"/>
+
+    <Button
+        android:id="@+id/btnPay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enviar"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:padding="15dp"
+        app:cornerRadius="15dp"
+        android:backgroundTint="@color/red"
+        android:layout_margin="20dp"/>
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:srcCompat="@tools:sample/avatars" />
+
+
+</LinearLayout>

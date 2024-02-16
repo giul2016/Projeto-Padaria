@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="light_gray">#E6E1E1</color>
+
+    <color name="dark_gray">#9e9e9e</color>
+    <color name="red">#FF1744</color>
+    <color name="colorAccent2">#ffb48a</color>
+    <color name="amarelinho">#ffb48a</color>
+
+    <color name="marrom1">#5d2417</color>
+    <color name="marrom2">#8d4925</color>
+    <color name="marrom3">#c56d56</color>
+    <color name="marrom4">#ffb48a</color>
+    <color name="marrom5">#DE641F</color>
+
+    <color name="colorPrimary">#FF9655</color>
+    <color name="colorPrimaryDark">#FFB223</color>
+    <color name="colorAccent">#FFDBB1</color>
+    <color name="verde">#4CAF50</color>
+
+</resources>

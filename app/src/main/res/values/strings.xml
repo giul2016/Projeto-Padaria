@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Mini Padaria</string>
+    <string name="title_activity_menu">Menu</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Mini Padaria</string>
+    <string name="nav_header_subtitle">notrevepimentel@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Cardápio-</string>
+    <string name="menu_gallery">Pedidos</string>
+    <string name="menu_slideshow">Cupons</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="emailId">giulsilva@hotmail.com</string>
+    <string name="contactNo">031995430219</string>
+    <string name="contate_nos">
+        *Tirar dúvidas.\n
+        *Solicitar orçamentos.\n
+        *Dar sugestões.\n\n
+        Horário de atendimento: \n
+        Segunda a sexta de 8 ás 17:00hs.
+    </string>
+</resources>
