@@ -141,6 +141,20 @@ class ProductsListManager {
             Produto(R.drawable.paoitaliano6, "Pão italiano", 90.00, "Pães","Pão do tipo italiano casca grossa"),
             Produto(R.drawable.paomilho7, "Pão de milho", 90.00, "Pães","Pão de milho"),
             // ...
+
+
+            //
+            Produto(R.drawable.paofrances, "Pão francês", 5.00, "Pães","Pão francês tradicional"),
+            Produto(R.drawable.paovcarteira, "Baguete", 90.00, "Pães","Pão do tipo baguetinho"),
+            Produto(R.drawable.paofrios, "Pão de frios", 5.00, "Pães","Pão recheado de frios"),
+            Produto(R.drawable.paobengala, "Bengala", 90.00, "Pães","Pão de bengala"),
+            Produto(R.drawable.paocaseiro, "Pão caseiro", 5.00, "Pães","Pão de forma do tipo caseiro"),
+            Produto(R.drawable.paointegral, "Pão Integral", 90.00, "Pães","Pão integral de forma"),
+            Produto(R.drawable.paobanha, "Pão de banha", 90.00, "Pães","Pão de banha macio"),
+            Produto(R.drawable.paointegral, "Pão integral", 90.00, "Pães","Pão integral sem glútem"),
+            Produto(R.drawable.paoitaliano, "Pão italiano", 90.00, "Pães","Pão do tipo italiano casca grossa"),
+            Produto(R.drawable.paomilho, "Pão de milho", 90.00, "Pães","Pão de milho"),
+            //
         )
     }
     private fun createOtherList(): MutableList<Produto> {
