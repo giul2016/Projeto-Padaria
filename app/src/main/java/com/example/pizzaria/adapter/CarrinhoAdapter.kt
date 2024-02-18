@@ -66,11 +66,13 @@ class CarrinhoAdapter(
         holder.quantidade.text = quantidade.toString()
 
         holder.btnDeletar.setOnClickListener {
+            removeQuantidadeProduto(produto)
             carrinho.removeAt(position)
             notifyItemRemoved(position)
             notifyItemRangeChanged(position, carrinho.size)
             (context as? CarrinhoActivity)?.getPrecoTotalItens()
             PrefConfig.writeListInPref(context, carrinho)
+            atualizarQuantidade(holder)
             onCartItemDeleted()
         }
 
@@ -96,7 +98,6 @@ class CarrinhoAdapter(
                 holder.quantidade.text = novaQuantidade.toString()
                 setQuantidadeProduto(produto, novaQuantidade)
                 atualizarVisibilidadeLixeira(holder)
-                setQuantidadeProduto(produto, novaQuantidade)
             } else {
                 atualizarVisibilidadeLixeira(holder)
                 //Toast.makeText(context, "Se quiser remover o item use a lixaira ao lado.", Toast.LENGTH_SHORT).show()
