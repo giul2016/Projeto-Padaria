@@ -19,7 +19,6 @@ import androidx.lifecycle.Observer
 import com.example.pizzaria.databinding.ActivityMenuBinding
 import com.example.pizzaria.ui.CarrinhoActivity
 
-
 class Menu : AppCompatActivity(), OnItemAddedListener {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -50,19 +49,16 @@ class Menu : AppCompatActivity(), OnItemAddedListener {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_produtos, R.id.nav_contato
+                R.id.nav_home,
+                R.id.nav_gallery,
+                R.id.nav_slideshow,
+                R.id.nav_produtos,
+                R.id.nav_contato
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
-
-//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        menuInflater.inflate(R.menu.menu, menu)
-//
-//        return true
-//    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         // Inflate the menu
@@ -86,20 +82,20 @@ class Menu : AppCompatActivity(), OnItemAddedListener {
 
     private fun updateCartItemCount(count: Int) {
         val badgeItem = menu?.findItem(com.example.pizzaria.R.id.badge)
-        badgeItem?.actionView?.findViewById<TextView>(com.example.pizzaria.R.id.actionbar_notifcation_textview)?.text = count.toString()
+        badgeItem?.actionView?.findViewById<TextView>(com.example.pizzaria.R.id.actionbar_notifcation_textview)?.text =
+            count.toString()
     }
 
-
     override fun onItemAdd() {
-        // Incrementa o contador do carrinho
+        // Incrementa o contador do carrinho no icone
         CarrinhoManager.incrementItemCountInCart()
 
         // Atualiza o ícone do menu
         invalidateOptionsMenu()
     }
+
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_menu)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
-
 }

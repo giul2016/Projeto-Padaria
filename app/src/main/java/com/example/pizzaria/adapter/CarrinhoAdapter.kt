@@ -1,10 +1,8 @@
 package com.example.pizzaria.adapter
 
-/********************************************
- *     Created by Giul on 10/02/2024.  *
- ********************************************/
 import android.content.Context
 import android.os.Build
+import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +10,6 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat.invalidateOptionsMenu
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pizzaria.OnCartItemDeletedListener
@@ -21,13 +18,20 @@ import com.example.pizzaria.R
 import com.example.pizzaria.model.PrefConfig
 import com.example.pizzaria.model.Produto
 import com.example.pizzaria.ui.CarrinhoActivity
+import com.google.gson.Gson
 import java.text.NumberFormat
 import java.util.Locale
 
-class CarrinhoAdapter(private val context: Context,
-                      private var carrinho: MutableList<Produto> = mutableListOf(),
-                      private val activity: CarrinhoActivity
-) : RecyclerView.Adapter<CarrinhoAdapter.ViewHolder>(), OnItemAddedListener,OnCartItemDeletedListener {
+class CarrinhoAdapter(
+    private val context: Context,
+    private var carrinho: MutableList<Produto> = mutableListOf(),
+    private val activity: CarrinhoActivity
+) : RecyclerView.Adapter<CarrinhoAdapter.ViewHolder>(), OnItemAddedListener,
+    OnCartItemDeletedListener {
+
+    private val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+    private val gson = Gson()
+    private val quantidadeKeyPrefix = "quantidade_"
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nomeProduto: TextView = itemView.findViewById(R.id.nomeProduto)
@@ -38,88 +42,93 @@ class CarrinhoAdapter(private val context: Context,
         val adicionarItem: Button = itemView.findViewById(R.id.btnAcrescentar)
         val diminuirItem: Button = itemView.findViewById(R.id.btnToDecrescentar)
         val btnDeletar: ImageButton = itemView.findViewById(R.id.ic_delete)
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_produto_carrinho, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_produto_carrinho, parent, false)
         return ViewHolder(view)
     }
 
     private lateinit var holder: ViewHolder
-
-    @RequiresApi(Build.VERSION_CODES.N)
+    private lateinit var produto: Produto
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         this.holder = holder
-        val produto = carrinho[position]
+        produto = carrinho[position]
 
-        val formattedPrice = NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
-            .format(produto.price)
         holder.nomeProduto.text = produto.name
-        holder.quantidade.text = "1"
-        holder.preco.text = formattedPrice.toString()
+        holder.preco.text =
+            NumberFormat.getCurrencyInstance(Locale("pt", "BR")).format(produto.price)
         holder.imagem.setBackgroundResource(produto.imgProduct)
         holder.descricao.text = produto.descricao
 
-
-       // val decimalFormat = DecimalFormat.getCurrencyInstance()
-        atualizarQuantidade(holder)
+        var quantidade = getQuantidadeProduto(produto)
+        holder.quantidade.text = quantidade.toString()
 
         holder.btnDeletar.setOnClickListener {
             carrinho.removeAt(position)
             notifyItemRemoved(position)
             notifyItemRangeChanged(position, carrinho.size)
-
             (context as? CarrinhoActivity)?.getPrecoTotalItens()
-
             PrefConfig.writeListInPref(context, carrinho)
-            // Exibir uma mensagem informando que o item foi removido
-            //Toast.makeText(context, "Item removido do carrinho", Toast.LENGTH_SHORT).show()
             onCartItemDeleted()
-           // onItemAdd()
         }
 
         holder.adicionarItem.setOnClickListener {
-            val quantidadeAtual = holder.quantidade.text.toString().toIntOrNull() ?: 1
-            val produto = carrinho[position]
-            holder.quantidade.text = (quantidadeAtual + 1).toString()
+            var quantidadeAtual = holder.quantidade.text.toString().toIntOrNull() ?: 1
+            produto = carrinho[position]
+            val novaQuantidade = quantidadeAtual + 1
+            holder.quantidade.text = novaQuantidade.toString()
+            setQuantidadeProduto(produto, novaQuantidade)
             atualizarVisibilidadeLixeira(holder)
             atualizarQuantidade(holder)
-            (context as? CarrinhoActivity)?.adicionarQtdItemAoCarrinho(produto)
+            //val novaQuantidade = quantidade ++
 
-             //onItemAdd()
-            //itemCountInCart++
+            (context as? CarrinhoActivity)?.adicionarQtdItemAoCarrinho(produto)
+            activity.getPrecoTotalItens()
         }
 
         holder.diminuirItem.setOnClickListener {
             val quantidadeAtual = holder.quantidade.text.toString().toIntOrNull() ?: 1
 
             if (quantidadeAtual > 1) {
-                holder.quantidade.text = (quantidadeAtual - 1).toString()
+                val novaQuantidade = quantidadeAtual - 1
+                holder.quantidade.text = novaQuantidade.toString()
+                setQuantidadeProduto(produto, novaQuantidade)
                 atualizarVisibilidadeLixeira(holder)
-            } else{
+                setQuantidadeProduto(produto, novaQuantidade)
+            } else {
                 atualizarVisibilidadeLixeira(holder)
                 //Toast.makeText(context, "Se quiser remover o item use a lixaira ao lado.", Toast.LENGTH_SHORT).show()
             }
             val produto = carrinho[position]
 
-           // atualizarQuantidade(holder)
+            // atualizarQuantidade(holder)
 
             (context as? CarrinhoActivity)?.reduzirQtdItemAoCarrinho(produto)
 
-           // itemCountInCart--
+            // itemCountInCart--
         }
 
         atualizarVisibilidadeLixeira(holder)
 
     }
 
-    override fun getItemCount(): Int {
-        return carrinho.size
+    override fun getItemCount(): Int = carrinho.size
+
+    private fun getQuantidadeProduto(produto: Produto): Int {
+        val key = quantidadeKeyPrefix + produto.hashCode()
+        return sharedPreferences.getInt(key, 1)
     }
 
-    private fun atualizarQuantidade(holder: ViewHolder) {
-        holder.quantidade.text.toString()
+    private fun setQuantidadeProduto(produto: Produto, quantidade: Int) {
+        val key = quantidadeKeyPrefix + produto.hashCode()
+        sharedPreferences.edit().putInt(key, quantidade).apply()
+    }
+
+    private fun removeQuantidadeProduto(produto: Produto) {
+        val key = quantidadeKeyPrefix + produto.hashCode()
+        sharedPreferences.edit().remove(key).apply()
     }
 
     private fun atualizarVisibilidadeLixeira(holder: ViewHolder) {
@@ -132,11 +141,14 @@ class CarrinhoAdapter(private val context: Context,
             holder.diminuirItem.visibility = View.VISIBLE
         }
     }
-    // Incrementa o contador do carrinho e atualiza menu
+
+    fun atualizarQuantidade(holder: ViewHolder) {
+        holder.quantidade.text.toString()
+    }
+
     override fun onItemAdd() {
-        // Incrementa o contador do carrinho
+        // Incrementa o contador do carrinho e atualiza menu
         CarrinhoManager.incrementItemCountInCart()
-        //  atualizar o ícone do carrinho na barra de ação da CarrinhoActivity
         invalidateOptionsMenu(activity)
     }
 
@@ -144,7 +156,7 @@ class CarrinhoAdapter(private val context: Context,
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             (context as? CarrinhoActivity)?.onCartItemDeleted()
         }
-
         CarrinhoManager.decrementItemCountInCart()
     }
+
 }

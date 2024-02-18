@@ -1,12 +1,10 @@
-//import android.content.Context
-//import android.content.SharedPreferences
-
-
-
 import android.content.Context
 import android.content.SharedPreferences
+import android.preference.PreferenceManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.pizzaria.model.Produto
+import com.google.gson.Gson
 
 object CarrinhoManager {
     private const val PREFS_NAME = "CARRINHO_PREFS"
