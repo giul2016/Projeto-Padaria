@@ -1,9 +1,4 @@
 package com.example.pizzaria.ui
-
-/********************************************
- *     Created by Giul on 10/02/2024.  *
- ********************************************/
-
 import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
@@ -22,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pizzaria.OnCartItemDeletedListener
 import com.example.pizzaria.R
 import com.example.pizzaria.adapter.CarrinhoAdapter
-import com.example.pizzaria.model.PrefConfig
 import com.example.pizzaria.model.Produto
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
@@ -33,24 +27,13 @@ import java.util.Locale
 
 class CarrinhoActivity : AppCompatActivity(), OnCartItemDeletedListener {
 
-    private var carrinho: MutableList<Produto> = mutableListOf()
-
     private lateinit var toolbar: Toolbar
-
     private lateinit var tvTotal: TextView
-
     private lateinit var adapter: CarrinhoAdapter
-
     private var carrinhoConte: MutableMap<Produto, Int> = mutableMapOf()
-
-    private var totalInicial: Double = 0.0
-
     private lateinit var tvTotalItens: TextView
-
     private lateinit var prefs: SharedPreferences
-
     private lateinit var recyclerView: RecyclerView
-
     private val PREF_KEY_CARRINHO = "CARRINHO"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,8 +41,6 @@ class CarrinhoActivity : AppCompatActivity(), OnCartItemDeletedListener {
         setContentView(R.layout.activity_carrinho)
 
         prefs = PreferenceManager.getDefaultSharedPreferences(this)
-
-        CarrinhoManager.init(this)
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.apply {
@@ -70,85 +51,55 @@ class CarrinhoActivity : AppCompatActivity(), OnCartItemDeletedListener {
         tvTotal = findViewById(R.id.tv_total)
         tvTotalItens = findViewById(R.id.tv_total_itens)
 
-        carrinho = PrefConfig.readListFromPref(this) ?: mutableListOf()
+        // Carrega os dados do SharedPreferences
+        carrinhoConte = retrieveMutableMapFromSharedPreferences(this)
 
-        if (carrinho.isEmpty()) {
-            carrinho = mutableListOf()
-        } else {
-            val listaSemDuplicatas = carrinho.distinct() // Remove itens duplicados
-            carrinho.clear() // Limpa a lista atual
-            carrinho.addAll(listaSemDuplicatas) // Adiciona a lista sem duplicatas
-        }
+        recyclerView = findViewById(R.id.recyclerViewCarrinho)
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Se a lista for nula, inicialize com uma lista vazia
-        if (carrinho == null) {
-            carrinho = mutableListOf()
-        }
+        // Configura o adaptador com os dados existentes
+        adapter = CarrinhoAdapter(this, carrinhoConte, this)
+        recyclerView.adapter = adapter
 
         val extras = intent.extras
         val listaDoIntent = extras?.getParcelableArrayList<Produto>("carrinho")
         if (listaDoIntent != null) {
-            for (item in listaDoIntent) {
-                if (!carrinho.contains(item)) {
-                    carrinho.add(item)
+            for (produto in listaDoIntent) {
+                // Verifica se o produto já está no carrinho
+                if (carrinhoConte.containsKey(produto)) {
+                    // Se o produto já estiver no carrinho, apenas incrementa sua quantidade
+                    carrinhoConte[produto] = carrinhoConte[produto]!!
+                } else {
+                    // Se o produto não estiver no carrinho, define sua quantidade como 1
+                    carrinhoConte[produto] = 1
                 }
             }
-            // Salva a lista atualizada no SharedPreferences
-            PrefConfig.writeListInPref(this, carrinho)
+            // Notifica o adaptador sobre a adição de novos itens
+            adapter.notifyDataSetChanged()
         }
-        // Configura o RecyclerView para exibir a lista de produtos
-        recyclerView = findViewById(R.id.recyclerViewCarrinho)
-        //recyclerView: RecyclerView = findViewById(R.id.recyclerViewCarrinho)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = CarrinhoAdapter(this, carrinho, this)
-        recyclerView.adapter = adapter
-
         getPrecoTotalItens()
-        // Carrega os dados do SharedPreferences
-        carrinhoConte = retrieveMutableMapFromSharedPreferences(this)
-        // Toast.makeText(this, "eu $carrinhoConte", Toast.LENGTH_LONG).show()
-        notifyUpdate()
     }
 
     fun getPrecoTotalItens() {
 
-        val totalItens = carrinho.size
-        totalInicial = 0.0
-        for (produto in carrinho) {
-            totalInicial += produto.price
-        }
-        // Formata o total para exibição
-        val formattedTotal =
-            NumberFormat.getCurrencyInstance(Locale("pt", "BR")).format(totalInicial)
-        tvTotal.text = formattedTotal
-        val itemText = if (totalItens > 1) "itens" else "item"
-        tvTotalItens.text = "Total / $totalItens $itemText"
-        notifyUpdate()
-    }
+        val totalItens = carrinhoConte.size
+        var totalCarrinho = 0.0
 
-    private fun notifyUpdate() {
-
-        var totalCarrinho = totalInicial
-        val totalItens = carrinho.size
-
-        val conteudoCarrinhoConte = StringBuilder()
         for ((produto, quantidade) in carrinhoConte) {
             totalCarrinho += produto.price * quantidade
-            conteudoCarrinhoConte.append("$produto: $quantidade\n")
         }
 
-        //Toast.makeText(this, conteudoCarrinhoConte.toString(), Toast.LENGTH_LONG).show()
-        val formattedTotal =
-            NumberFormat.getCurrencyInstance(Locale("pt", "BR")).format(totalCarrinho)
+        val formattedTotal = NumberFormat.getCurrencyInstance(Locale("pt", "BR")).format(totalCarrinho)
         tvTotal.text = formattedTotal
+
         val itemText = if (totalItens > 1) "itens" else "item"
         tvTotalItens.text = "Total / $totalItens $itemText"
+        saveCarrinhoToSharedPreferences()
     }
 
     fun adicionarQtdItemAoCarrinho(produto: Produto) {
         val quantidadeAtual = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             carrinhoConte.getOrDefault(produto, 0)
-
         } else {
             if (carrinhoConte.containsKey(produto)) {
                 carrinhoConte[produto]!! // Se o produto já está no mapa, retorna sua quantidade atual
@@ -156,16 +107,14 @@ class CarrinhoActivity : AppCompatActivity(), OnCartItemDeletedListener {
                 0 // Se o produto não está no mapa, retorna 0
             }
         }
-        carrinhoConte[produto] = quantidadeAtual + 1
-        // Toast.makeText(this, "lista: $carrinhoConte", Toast.LENGTH_LONG).show()
+        carrinhoConte[produto] = quantidadeAtual
         saveCarrinhoToSharedPreferences()
-        notifyUpdate()
+
     }
 
     fun reduzirQtdItemAoCarrinho(produto: Produto) {
         val quantidadeAtual = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             carrinhoConte.getOrDefault(produto, 0)
-
         } else {
             if (carrinhoConte.containsKey(produto)) {
                 carrinhoConte[produto]!! // Se o produto já está no mapa, retorna sua quantidade atual
@@ -175,9 +124,8 @@ class CarrinhoActivity : AppCompatActivity(), OnCartItemDeletedListener {
         }
         // Verifica se a quantidade atual é maior que 0 antes de reduzir
         if (quantidadeAtual > 0) {
-            carrinhoConte[produto] = quantidadeAtual - 1
+            carrinhoConte[produto] = quantidadeAtual
             saveCarrinhoToSharedPreferences()
-            notifyUpdate()
 
         } else {
             // Caso a quantidade atual seja 0, não fazemos nada
@@ -185,6 +133,7 @@ class CarrinhoActivity : AppCompatActivity(), OnCartItemDeletedListener {
             // ou ainda podemos remover o produto do carrinho, se for apropriado para o contexto
         }
     }
+
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
@@ -196,24 +145,20 @@ class CarrinhoActivity : AppCompatActivity(), OnCartItemDeletedListener {
         super.onBackPressed()
     }
 
-    //https://stackoverflow.com/questions/31746300/how-to-show-snackbar-at-top-of-the-screen
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCartItemDeleted() {
-
+        deleteItemShared()
         val rootView = window.decorView.rootView
-        val snackBarView =
-            Snackbar.make(rootView, "Item removido do Carrinho", Snackbar.LENGTH_SHORT)
+        val snackBarView = Snackbar.make(rootView, "Item removido do Carrinho", Snackbar.LENGTH_SHORT)
         val view = snackBarView.view
         val params = view.layoutParams as FrameLayout.LayoutParams
         params.gravity = Gravity.TOP
-        // snackBarView.view.setPadding(0, 10, 0, 0)
-        params.topMargin = 150 // Ajuste esse valor conforme necessário
-        view.layoutParams = params
+        params.topMargin = 150
         view.layoutParams = params
         view.setBackgroundResource(R.drawable.snackbar_background)
-        val textView = view.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)//
+        val textView = view.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
         textView.textAlignment = View.TEXT_ALIGNMENT_CENTER
-        textView.setTextSize(14f)// Defina a cor desejada aqui
+        textView.setTextSize(14f)
         snackBarView.setActionTextColor(Color.WHITE)
         snackBarView.animationMode = BaseTransientBottomBar.ANIMATION_MODE_SLIDE
         snackBarView.show()
@@ -250,11 +195,22 @@ class CarrinhoActivity : AppCompatActivity(), OnCartItemDeletedListener {
                 map[produto] = quantidade
             }
         }
-        // Criar um novo mapa e copiar as entradas do mapa original para ele
-        val novoMap = mutableMapOf<Produto, Int>()
-        novoMap.putAll(map)
-
-        return novoMap
+        return map
     }
 
+    fun deleteItemShared() {
+        // Atualize a lista `carrinhoConte` com os itens restantes após a remoção
+        // Remova o item deletado da lista carrinhoConte
+        val iterator = carrinhoConte.iterator()
+        while (iterator.hasNext()) {
+            val entry = iterator.next()
+            if (entry.value == 0) {
+                iterator.remove() // Remove o item cuja quantidade é zero
+            }
+        }
+        // Salve a lista atualizada no SharedPreferences
+        saveCarrinhoToSharedPreferences()
+        adapter.notifyDataSetChanged()
+    }
 }
+
