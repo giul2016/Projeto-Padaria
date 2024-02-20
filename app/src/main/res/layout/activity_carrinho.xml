@@ -33,6 +33,7 @@
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
         android:scrollbars="vertical"
+        android:background="@drawable/carrinhobackground"
         app:layout_constraintBottom_toTopOf="@+id/cart_footer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

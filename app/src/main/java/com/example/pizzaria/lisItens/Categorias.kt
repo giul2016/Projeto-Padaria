@@ -14,54 +14,54 @@ class Categorias {
         val categoriaList: MutableList<Categoria> = mutableListOf(
 
             Categoria(
-                imgResource = R.drawable.categoria2,
+                imgResource = R.drawable.pizzas3,
                 name = "Pizza"
 
             ),
             Categoria(
-                imgResource = R.drawable.categoria1,
+                imgResource = R.drawable.esfihas2,
                 name = "Esfiha"
 
 
             ),
             Categoria(
-                imgResource = R.drawable.categoria3,
+                imgResource = R.drawable.lanches9,
                 name = "Lanches"
 
             ),
             Categoria(
-                imgResource = R.drawable.categoria4,
+                imgResource = R.drawable.salgados4,
                 name = "Salgados"
 
             ),
             Categoria(
-                imgResource = R.drawable.categoria5,
+                imgResource = R.drawable.bebidas6,
                 name = "Bebidas"
 
             ),
             Categoria(
-                imgResource = R.drawable.categoria6,
+                imgResource = R.drawable.doces8,
                 name = "Doces"
 
 
             ),
             Categoria(
-                imgResource = R.drawable.categoria7,
+                imgResource = R.drawable.paes1,
                 name = "Pães"
 
             ),
             Categoria(
-                imgResource = R.drawable.categoria8,
+                imgResource = R.drawable.assados7,
                 name = "Assados"
 
             ),
             Categoria(
-                imgResource = R.drawable.categoria9,
+                imgResource = R.drawable.sorvetes10,
                 name = "Sorvetes"
 
             ),
             Categoria(
-                imgResource = R.drawable.categoria10,
+                imgResource = R.drawable.frios5,
                 name = "Frios"
 
             )

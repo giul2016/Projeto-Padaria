@@ -81,16 +81,16 @@ class ProductsListManager {
     private fun createKebabList(): MutableList<Produto> {
         // Adicione produtos Kebab conforme necessário
         return mutableListOf(
-            Produto(R.drawable.esfihaqueijo, "Esfiha de queijo", 10.00, "Esfihas","Esfiha com queijo"),
-            Produto(R.drawable.esfihacatupiry, "Esfiha de catupiry", 8.00, "Esfihas","Esfiha com queijo catupiry"),
-            Produto(R.drawable.esfihamilhocatu, "Milho catupiry", 10.00, "Esfiha ","Esfiha com queijo catupiry e milho"),
-            Produto(R.drawable.esfihafrango, "Esfiha de frango", 8.00, "Esfihas","Esfiha com frango desfiado"),
-            Produto(R.drawable.esfihamoda, "Esfiha a moda", 10.00, "Esfihas","Esfiha de mussarela com bacom"),
-            Produto(R.drawable.esfihamoranchoco, "Choco Morango", 8.00, "Esfihas","Esfiha de chocolate com morango"),
-            Produto(R.drawable.esfihalombo, "Esfiha de lombo", 10.00, "Esfihas","Esfiha de lombo"),
-            Produto(R.drawable.esfihalomboqueijo, "Lombo com queijo", 8.00, "Esfihas","Esfiha de Lombo com queijo mussarela"),
-            Produto(R.drawable.esfihapalmito, "Palmito", 8.00, "Esfihas","Esfiha de palmito com queijo mussarela"),
-            Produto(R.drawable.esfihsvegetariana, "Vegetariana", 8.00, "Esfihas","Esfiha de brócolis com queijo ricota"),
+            Produto(R.drawable.reccoca, "Coca-Cola", 10.00, "Bebidas","Refrigerante coca cola 2 litros"),
+            Produto(R.drawable.recsprit, "Sprit", 8.00, "Bebidas","Refrigerante sprit 2 litros"),
+            Produto(R.drawable.recskol, "Cerveja Skoll", 10.00, "Bebidas ","Cerveja Skoll litrão"),
+            Produto(R.drawable.recbud, "Cervela Bud", 8.00, "Bebidas","Cerveja bud long neck"),
+            Produto(R.drawable.recabs, "Vodka Absolut", 10.00, "Bebidas","Vodka Absolut"),
+            Produto(R.drawable.recsmir, "Vodka Smirnoff", 8.00, "Bebidas","Vodka Smirnoff"),
+            Produto(R.drawable.recgato, "Gatorade", 10.00, "Bebidas","Energético gatorade"),
+            Produto(R.drawable.recred, "Red Bull", 8.00, "Bebidas","Energético red bull"),
+            Produto(R.drawable.reclabelred, "Whisky Red", 8.00, "Bebidas","Whisky Red Label"),
+            Produto(R.drawable.reclabelblack, "Whisky Black", 8.00, "Bebidas","Whisky Black Label"),
             // ...
         )
     }
@@ -113,16 +113,16 @@ class ProductsListManager {
     private fun createSalgadoList(): MutableList<Produto> {
         // Adicione produtos Pizza conforme necessário
         return mutableListOf(
-            Produto(R.drawable.salgacoxinha7, "Coxinha", 5.00, "Salgados","Coxinha de frango"),
-            Produto(R.drawable.salgadopastel1, "Pastel", 90.00, "Salgados","Pastel de carne tradicional"),
-            Produto(R.drawable.salgadosacicha3, "Bolinho de salcicha", 5.00, "Salgados","Salcicha em massa de coxinha"),
-            Produto(R.drawable.salgacoxinha7, "Torta", 90.00, "Salgados","Torta de frango com massa de empada "),
-            Produto(R.drawable.salgbolcarne6, "Bolinho de carne", 5.00, "Salgados","Bolinho de carne tradicional"),
-            Produto(R.drawable.salgarisfrango9, "Salgadinho de frango", 90.00, "Salgados","Salgado de frango desfiado"),
-            Produto(R.drawable.salgempada8, "Empada", 90.00, "Salgados","Tradicional empada de palmito"),
-            Produto(R.drawable.salgpaoqueijo10, "Risoli de queijo", 90.00, "Salgados","Risoli recheado com queijo"),
-            Produto(R.drawable.salgpasfor4, "Pastel de forno", 90.00, "Salgados","Pastel de forno com recheio especial"),
-            Produto(R.drawable.salgbolsal5, "Empanado de calabresa", 90.00, "Salgados","Pedaços de calabresa empanados"),
+            Produto(R.drawable.saldadocoxinha, "Coxinha", 5.00, "Salgados","Coxinha de frango"),
+            Produto(R.drawable.saldadopastel, "Pastel", 90.00, "Salgados","Pastel de carne tradicional"),
+            Produto(R.drawable.saldadobolinhosalcicha, "Bolinho de salcicha", 5.00, "Salgados","Salcicha em massa de coxinha"),
+            Produto(R.drawable.saldadobolinhocarne, "Torta", 90.00, "Salgados","Torta de frango com massa de empada "),
+            Produto(R.drawable.saldadobolinhocarne, "Bolinho de carne", 5.00, "Salgados","Bolinho de carne tradicional"),
+            Produto(R.drawable.saldadokibe, "Salgadinho de Kibe", 90.00, "Salgados","Salgado de kibe com carne"),
+            Produto(R.drawable.saldadoempada, "Empada", 90.00, "Salgados","Tradicional empada de palmito"),
+            Produto(R.drawable.saldadorisoli, "Risoli de queijo", 90.00, "Salgados","Risoli recheado com queijo"),
+            Produto(R.drawable.saldadopastelforno, "Pastel de forno", 90.00, "Salgados","Pastel de forno com recheio especial"),
+            Produto(R.drawable.saldadocalabresa, "Empanado de calabresa", 90.00, "Salgados","Pedaços de calabresa empanados"),
             // ...
         )
     }
@@ -192,16 +192,16 @@ class ProductsListManager {
     private fun createFriosList(): MutableList<Produto> {
         // Adicione produtos Pizza conforme necessário
         return mutableListOf(
-            Produto(R.drawable.friosmrtadela, "Mortadela", 45.00, "Frios","Mortadela fatiada"),
-            Produto(R.drawable.friosmussarela, "Mussarela", 40.00, "Frios","Mussarela fatiada"),
-            Produto(R.drawable.friospresunto, "Presunto", 55.00, "Frios","Presunto fatiado"),
-            Produto(R.drawable.friosapresuntado, "Apresuntado", 60.00, "Frios","Apresuntado fatiado"),
-            Produto(R.drawable.frioslombo, "Lombo", 25.00, "Frios","Lombo fatiado"),
-            Produto(R.drawable.fiosprato, "Queijo prato", 90.00, "Frios","Queijo prato fatiado"),
-            Produto(R.drawable.friosrosbife, "Rosbife", 45.00, "Frios","Rosbife fatiado)"),
-            Produto(R.drawable.friossalame, "Salame", 50.00, "Frios","Salame fatiado"),
-            Produto(R.drawable.friostemperada, "Calabresa", 35.00, "Frios","Calabres e cebola"),
-            Produto(R.drawable.friosprovolone, "Provolone", 55.00, "Frios","Queijo provolone fatiado")
+            Produto(R.drawable.fatiarmortasimples, "Mortadela", 45.00, "Frios","Mortadela fatiada"),
+            Produto(R.drawable.fatiarmussarela, "Mussarela", 40.00, "Frios","Mussarela fatiada"),
+            Produto(R.drawable.fatiarpresunto, "Presunto", 55.00, "Frios","Presunto fatiado"),
+            Produto(R.drawable.fatiarapresuntado, "Apresuntado", 60.00, "Frios","Apresuntado fatiado"),
+            Produto(R.drawable.fatiarbranco, "Queijo Branco", 25.00, "Frios","Queijo branco fatiado"),
+            Produto(R.drawable.fatiarqueijo, "Queijo prato", 90.00, "Frios","Queijo prato fatiado"),
+            Produto(R.drawable.fatiarrosbife, "Rosbife", 45.00, "Frios","Rosbife fatiado)"),
+            Produto(R.drawable.fatiarsalame, "Salame", 50.00, "Frios","Salame fatiado"),
+            Produto(R.drawable.fatiarmortadela, "Mortadela especial", 35.00, "Frios","Mortadela especial temperada"),
+            Produto(R.drawable.fatiarprovolone, "Provolone", 55.00, "Frios","Queijo provolone fatiado")
             //
         )
     }

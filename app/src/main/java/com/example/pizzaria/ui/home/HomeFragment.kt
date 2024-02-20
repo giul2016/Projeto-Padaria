@@ -32,11 +32,11 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        binding.btnMain.setOnClickListener {
+    /*    binding.btnMain.setOnClickListener {
             val intent = Intent(context, CarrinhoActivity::class.java)
             startActivity(intent)
            // Toast.makeText (getActivity (), "Mudar para Main", Toast.LENGTH_LONG).show ();
-        }
+        }*/
 
         val textView: TextView = binding.textHome
         homeViewModel.text.observe(viewLifecycleOwner) {

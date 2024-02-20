@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/apao"
+    android:background="@color/colorPrimaryDark"
     tools:context=".ui.home.HomeFragment">
 
     <TextView
@@ -14,7 +14,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="Home"
+        android:text="Produtos"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="40sp"
@@ -24,19 +24,4 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <Button
-        android:id="@+id/btnMain"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:backgroundTint="@color/marrom1"
-        android:text="Carrinho"
-        android:textColor="@color/white"
-        app:icon="@drawable/baseline_add_shopping_cart_24"
-        app:iconTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
