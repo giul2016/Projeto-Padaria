@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Pizzaria" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <item name="colorPrimary">@color/marrom1</item>
+        <item name="colorPrimary">@color/marrom5</item>
         <item name="colorOnPrimary">@color/marrom2</item>
         <item name="colorPrimaryVariant">@color/white</item>
 

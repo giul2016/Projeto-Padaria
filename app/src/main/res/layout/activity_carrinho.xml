@@ -33,7 +33,6 @@
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
         android:scrollbars="vertical"
-        android:background="@drawable/carrinhobackground"
         app:layout_constraintBottom_toTopOf="@+id/cart_footer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,8 +83,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_weight="1"
-            android:background="@color/red"
-            android:text="Finalizar"
+            android:backgroundTint="@color/red"
+            android:text="Continuar"
             android:textColor="@android:color/white" />
 
     </LinearLayout>

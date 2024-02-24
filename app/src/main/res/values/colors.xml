@@ -16,9 +16,12 @@
     <color name="marrom5">#DE641F</color>
 
     <color name="colorPrimary">#FF9655</color>
-    <color name="colorPrimaryDark">#FFB223</color>
+    <color name="colorPrimaryDark">#EF9E0B</color>
     <color name="colorAccent">#FFDBB1</color>
     <color name="verde">#4CAF50</color>
     <color name="laranja_forte">#F44808</color>
+    <color name="marron_botao">#3A1C12</color>
+
+
 
 </resources>
