@@ -52,6 +52,8 @@ class ProdutosFragment : Fragment() , CategoriaClickListener, OnItemAddedListene
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        activity?.title = "Produtos"
+
         CarrinhoManager.init(requireContext())
 
         // Observar o LiveData e atualizar o contador do carrinho

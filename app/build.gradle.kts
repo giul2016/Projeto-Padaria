@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
+    id ("kotlin-parcelize")
 }
 
 android {
@@ -43,6 +45,13 @@ android {
 
 dependencies {
 
+    implementation("com.google.android.gms:play-services-location:21.2.0")
+    val room_version = "2.6.1"
+
+    //Room
+    implementation("androidx.room:room-runtime:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
@@ -65,5 +74,15 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.4.0")
 
     implementation ("com.itextpdf:itext7-core:7.1.15")
+
+    implementation ("androidx.room:room-runtime:2.6.1")
+    implementation ("androidx.room:room-ktx:2.6.1")
+
+
+    implementation ("org.jetbrains.kotlin:kotlin-parcelize-runtime:1.9.0")
+
+    implementation ("com.google.android.material:material:1.9.0")
+
+
 
 }

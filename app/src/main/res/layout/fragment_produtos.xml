@@ -82,7 +82,7 @@
                     android:layout_height="wrap_content"
                     android:text="Salgados"
                     android:textColor="@color/dark_gray"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:padding="3dp"
                     android:background="@drawable/bg_button_disabled"
                     android:layout_marginTop="10dp"

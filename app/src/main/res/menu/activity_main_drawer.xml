@@ -13,6 +13,10 @@
             android:icon="@drawable/ic_novo_pedido"
             android:title="@string/menu_gallery" />
         <item
+            android:id="@+id/nav_pedido_confirmados"
+            android:icon="@drawable/ic_novo_pedido"
+            android:title="@string/menu_pedidos_confirmados" />
+        <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_cuponst_24"
             android:title="@string/menu_slideshow" />

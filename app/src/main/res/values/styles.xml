@@ -11,5 +11,16 @@
         <item name="android:background">@drawable/snackbar_background</item>
     </style>
 
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.Design.BottomSheet.Modal</item>
+    </style>
+
+    <style name="Button.Green">
+        <item name="android:textColor">@android:color/white</item>
+        <!-- Outros atributos de estilo que você deseja aplicar -->
+    </style>
+
+    <style name="Button">Button.Green</style>
+
 
 </resources>

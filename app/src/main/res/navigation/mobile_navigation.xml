@@ -28,6 +28,12 @@
         tools:layout="@layout/fragment_slideshow" />
 
     <fragment
+        android:id="@+id/nav_pedido_confirmados"
+        android:name="com.example.pizzaria.ui.PedidoConfirmadoFragment"
+        android:label="Pedidos Confirmados"
+        tools:layout="@layout/fragment_pedido_confirmado" />
+
+    <fragment
         android:id="@+id/nav_produtos"
         android:name="com.example.pizzaria.ui.ProdutosFragment"
         android:label="Produtos"

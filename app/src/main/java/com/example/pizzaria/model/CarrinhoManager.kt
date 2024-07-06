@@ -37,4 +37,10 @@ object CarrinhoManager {
             prefs.edit().putInt(ITEM_COUNT_KEY, currentCount - 1).apply()
         }
     }
+
+    // Função para resetar o contador de itens no carrinho
+    fun resetItemCountInCart() {
+        _itemCountInCart.value = 0
+        prefs.edit().putInt(ITEM_COUNT_KEY, 0).apply()
+    }
 }

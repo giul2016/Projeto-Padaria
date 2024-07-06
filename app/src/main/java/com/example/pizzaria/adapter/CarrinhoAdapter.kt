@@ -112,4 +112,12 @@ class CarrinhoAdapter(
         }
         CarrinhoManager.decrementItemCountInCart()
     }
+
+
+    // Método para atualizar a lista
+    fun atualizarLista(novaLista: MutableMap<Produto, Int>) {
+        carrinhoConte.clear()
+        carrinhoConte.putAll(novaLista)
+        notifyDataSetChanged()
+    }
 }

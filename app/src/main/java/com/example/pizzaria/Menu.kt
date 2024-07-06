@@ -16,6 +16,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.navigation.NavDestination
 import com.example.pizzaria.databinding.ActivityMenuBinding
 import com.example.pizzaria.ui.CarrinhoActivity
 
@@ -45,12 +46,36 @@ class Menu : AppCompatActivity(), OnItemAddedListener {
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_menu)
+
+        binding.navView.setNavigationItemSelectedListener { menuItem ->
+            // Obtenha o NavController
+            val navController = findNavController(R.id.nav_host_fragment_content_menu)
+
+            // Obtenha todos os destinos do gráfico de navegação
+            val graph = navController.graph
+            val startDestination = graph.findNode(graph.startDestinationId) as NavDestination
+
+            // Limpe a pilha de retrocesso antes de abrir o novo fragmento
+            navController.popBackStack(startDestination.id, false)
+
+            // Navegue para o destino correspondente ao item do menu clicado
+            navController.navigate(menuItem.itemId)
+
+            // Feche o drawer (menu lateral) se estiver aberto
+            binding.drawerLayout.closeDrawers()
+
+            true
+        }
+
+
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home,
                 R.id.nav_gallery,
+                R.id.nav_pedido_confirmados,
                 R.id.nav_slideshow,
                 R.id.nav_produtos,
                 R.id.nav_contato

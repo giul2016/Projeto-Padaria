@@ -22,17 +22,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Pedido"
+            android:text="Finalizar Pedido"
             android:textColor="@android:color/white"
-            android:textSize="34sp" />
+            android:textSize="20sp" />
 
     </androidx.appcompat.widget.Toolbar>
 
-    <EditText
-        android:id="@+id/editTextNome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nome" />
+
 
     <EditText
         android:id="@+id/editTextEndereco"
@@ -48,10 +44,34 @@
         android:layout_marginTop="8dp"
         android:hint="Telefone" />
 
+    <EditText
+        android:id="@+id/editTextNome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Observação" />
+
     <Button
         android:id="@+id/btnEnviarPedido"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Enviar Pedido" />
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/green"
+        android:text="Enviar Pedido"
+        android:textColor="@color/white"
+        app:iconTint="@color/white"
+        />
+    />
+
+
+
+
+<!--    <Button-->
+<!--        android:id="@+id/btnChamarPedido"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:text="Chamar Tela Pedido " />-->
 </LinearLayout>
+

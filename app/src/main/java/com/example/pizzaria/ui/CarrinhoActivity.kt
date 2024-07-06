@@ -1,8 +1,10 @@
 package com.example.pizzaria.ui
-import android.content.ActivityNotFoundException
+
+import android.content.BroadcastReceiver
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -20,10 +22,9 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.FileProvider
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pizzaria.ConfirmarPedidoDialog
 import com.example.pizzaria.OnCartItemDeletedListener
 import com.example.pizzaria.R
 import com.example.pizzaria.adapter.CarrinhoAdapter
@@ -33,8 +34,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.FileOutputStream
 import java.io.IOException
 import java.io.Serializable
 import java.text.NumberFormat
@@ -47,10 +46,12 @@ class CarrinhoActivity : AppCompatActivity(), OnCartItemDeletedListener {
     private lateinit var adapter: CarrinhoAdapter
     private var carrinhoConte: MutableMap<Produto, Int> = mutableMapOf()
     private lateinit var tvTotalItens: TextView
-    private lateinit var btnFinish: Button
+    private lateinit var btnContinuar: Button
     private lateinit var prefs: SharedPreferences
     private lateinit var recyclerView: RecyclerView
     private val PREF_KEY_CARRINHO = "CARRINHO"
+
+    private lateinit var receiver: BroadcastReceiver
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,14 +67,25 @@ class CarrinhoActivity : AppCompatActivity(), OnCartItemDeletedListener {
 
         tvTotal = findViewById(R.id.tv_total)
         tvTotalItens = findViewById(R.id.tv_total_itens)
-        btnFinish = findViewById(R.id.btn_finish)
-        btnFinish.setOnClickListener {
-           // enviarListaViaWhatsApp()
+        btnContinuar = findViewById(R.id.btn_continuar)
+        btnContinuar.isEnabled = false
+        btnContinuar.backgroundTintList = ContextCompat.getColorStateList(this, R.color.gray)
 
-            val intent = Intent(this, ConfirmaPedido::class.java).apply {
-                putExtra("carrinhoConte", carrinhoConte as Serializable)
+        updateFinishButtonState()
+        btnContinuar.setOnClickListener {
+            // enviarListaViaWhatsApp()
+
+//            val intent = Intent(this, ConfirmaPedido::class.java).apply {
+//                putExtra("carrinhoConte", carrinhoConte as Serializable)
+//            }
+//            startActivity(intent)
+
+            val confirmaPedido = ConfirmaPedidos().apply {
+                arguments = Bundle().apply {
+                    putSerializable("carrinhoConte", carrinhoConte as Serializable)
+                }
             }
-            startActivity(intent)
+            confirmaPedido.show(supportFragmentManager, "ConfirmaPedido")
 
         }
         // Carrega os dados do SharedPreferences
@@ -85,6 +97,18 @@ class CarrinhoActivity : AppCompatActivity(), OnCartItemDeletedListener {
         // Configura o adaptador com os dados existentes
         adapter = CarrinhoAdapter(this, carrinhoConte, this)
         recyclerView.adapter = adapter
+
+
+        receiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context?, intent: Intent?) {
+                if (intent?.action == "ATUALIZAR_CARRINHO") {
+                    limparCarrinho()
+                }
+            }
+        }
+
+        val filter = IntentFilter("ATUALIZAR_CARRINHO")
+        registerReceiver(receiver, filter)
 
         val extras = intent.extras
         val listaDoIntent = extras?.getParcelableArrayList<Produto>("carrinho")
@@ -105,6 +129,32 @@ class CarrinhoActivity : AppCompatActivity(), OnCartItemDeletedListener {
         getPrecoTotalItens()
     }
 
+
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(receiver)
+    }
+
+    // Método para limpar o carrinho
+    fun limparCarrinho() {
+        carrinhoConte.clear()
+        saveCarrinhoToSharedPreferences()
+        adapter.notifyDataSetChanged()
+        CarrinhoManager.resetItemCountInCart()
+    }
+
+
+    fun updateFinishButtonState() {
+        // Habilita o botão se a lista do carrinho não estiver vazia
+        btnContinuar.isEnabled = carrinhoConte.isNotEmpty()
+        // Muda a cor do botão para cinza se estiver desabilitado
+        btnContinuar.backgroundTintList = if (btnContinuar.isEnabled) {
+            ContextCompat.getColorStateList(this, R.color.red) // Cor vermelha quando habilitado
+        } else {
+            ContextCompat.getColorStateList(this, R.color.gray) // Cinza quando desabilitado
+        }
+    }
+
     fun getPrecoTotalItens() {
 
         val totalItens = carrinhoConte.size
@@ -114,11 +164,13 @@ class CarrinhoActivity : AppCompatActivity(), OnCartItemDeletedListener {
             totalCarrinho += produto.price * quantidade
         }
 
-        val formattedTotal = NumberFormat.getCurrencyInstance(Locale("pt", "BR")).format(totalCarrinho)
+        val formattedTotal =
+            NumberFormat.getCurrencyInstance(Locale("pt", "BR")).format(totalCarrinho)
         tvTotal.text = formattedTotal
 
         val itemText = if (totalItens > 1) "itens" else "item"
         tvTotalItens.text = "Total / $totalItens $itemText"
+        updateFinishButtonState()
         saveCarrinhoToSharedPreferences()
     }
 
@@ -174,7 +226,8 @@ class CarrinhoActivity : AppCompatActivity(), OnCartItemDeletedListener {
     override fun onCartItemDeleted() {
         deleteItemShared()
         val rootView = window.decorView.rootView
-        val snackBarView = Snackbar.make(rootView, "Item removido do Carrinho", Snackbar.LENGTH_SHORT)
+        val snackBarView =
+            Snackbar.make(rootView, "Item removido do Carrinho", Snackbar.LENGTH_SHORT)
         val view = snackBarView.view
         val params = view.layoutParams as FrameLayout.LayoutParams
         params.gravity = Gravity.TOP
@@ -237,7 +290,6 @@ class CarrinhoActivity : AppCompatActivity(), OnCartItemDeletedListener {
         saveCarrinhoToSharedPreferences()
         adapter.notifyDataSetChanged()
     }
-
 
 
 //    fun enviarListaViaWhatsApp() {
@@ -361,27 +413,27 @@ class CarrinhoActivity : AppCompatActivity(), OnCartItemDeletedListener {
     }
 
     private fun getUriToBitmap(bitmap: Bitmap): Uri? {
-            try {
-                val bytes = ByteArrayOutputStream()
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
+        try {
+            val bytes = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
 
-                val values = ContentValues().apply {
-                    put(MediaStore.Images.Media.TITLE, "temp_image")
-                    put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
-                }
-
-                val uri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
-                uri?.let {
-                    contentResolver.openOutputStream(it)?.use { outputStream ->
-                        outputStream.write(bytes.toByteArray())
-                    }
-                }
-                return uri
-            } catch (e: IOException) {
-                e.printStackTrace()
+            val values = ContentValues().apply {
+                put(MediaStore.Images.Media.TITLE, "temp_image")
+                put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
             }
-            return null
+
+            val uri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
+            uri?.let {
+                contentResolver.openOutputStream(it)?.use { outputStream ->
+                    outputStream.write(bytes.toByteArray())
+                }
+            }
+            return uri
+        } catch (e: IOException) {
+            e.printStackTrace()
         }
+        return null
+    }
 
 }
 

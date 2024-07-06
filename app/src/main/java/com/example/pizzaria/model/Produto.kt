@@ -67,5 +67,20 @@ data class Produto(
         fun fromJson(json: String): Produto {
             return Gson().fromJson(json, Produto::class.java)
         }
+
+        // Método estático para converter uma String em um Produto
+        fun fromString(string: String): Produto? {
+            val regex = Regex("""Produto\(imgProduct=(\d+),name=(.*?),price=(.*?),category=(.*?),descricao=(.*?)\)""")
+            val matchResult = regex.find(string) ?: return null
+            val (imgProduct, name, price, category, descricao) = matchResult.destructured
+            return Produto(
+                imgProduct.toInt(),
+                name,
+                price.toDoubleOrNull() ?: return null,
+                category,
+                descricao
+            )
+        }
     }
+
 }

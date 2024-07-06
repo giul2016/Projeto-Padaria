@@ -29,6 +29,8 @@ class ContatoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        activity?.title = "Contatos"
+
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
         (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -52,6 +54,11 @@ class ContatoFragment : Fragment() {
         // val textView: TextView = binding.textNotifications
 
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        activity?.title = "Contato"
     }
 
     fun enviarZap(view: View) {
