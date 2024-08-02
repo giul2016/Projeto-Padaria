@@ -11,8 +11,10 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="0dp"
+        android:layout_marginBottom="450dp"
         android:background="?attr/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/cont_Letras"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,7 +24,7 @@
     <ImageView
         android:id="@+id/imgProduct"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="350dp"
         android:layout_gravity="center"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,14 +78,12 @@
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="417dp"
+        android:layout_marginBottom="332dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgProduct"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/txtProductName"
@@ -91,8 +91,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:gravity="start"
-            android:textColor="@color/black"
             android:text="Pizza Mix"
+            android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -115,47 +115,27 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_margin="16dp"
+        android:background="@drawable/bg_edit_text"
         android:padding="5dp"
         android:text="Pão de hambuyguer, hamburguer de carne 200g, queijo, alface, tomate, cebola, bacon e ovo"
         android:textSize="18dp"
-        android:background="@drawable/bg_edit_text"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.562"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+        app:layout_constraintTop_toBottomOf="@+id/imgProduct" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="10dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtDescription">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:ems="100"
-            android:text="Alguma observação?"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/cont_Letras"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:ems="100"
-            android:gravity="right"
-            android:text=""
-            android:textSize="18sp" />
 
     </LinearLayout>
 
@@ -191,14 +171,48 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
         android:layout_marginEnd="8dp"
+        android:hint="Você poderá adicioná-la\n ao finalizar o seu pedido"
         android:text=""
         android:textAlignment="center"
-        android:hint="Você poderá adicioná-la\n ao finalizar o seu pedido"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        android:ems="100"
+        android:text="Alguma observação?"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/editTextObs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescription" />
+
+    <TextView
+        android:id="@+id/cont_Letras"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="201dp"
+        android:layout_weight="1"
+        android:ems="100"
+        android:gravity="right"
+        android:text=""
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
