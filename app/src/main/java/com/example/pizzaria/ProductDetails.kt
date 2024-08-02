@@ -71,7 +71,7 @@ class ProductDetails : AppCompatActivity(), OnItemAddedListener  {
             Editable.Factory.getInstance().newEditable(it)
         } ?: Editable.Factory.getInstance().newEditable("")
 
-        setupContadorCaracteres()
+       // setupContadorCaracteres()
 
         binding.btConfirm.setOnClickListener {
             if (carrinho.isEmpty()) {
@@ -124,7 +124,7 @@ class ProductDetails : AppCompatActivity(), OnItemAddedListener  {
         }
     }
 
-    private fun setupContadorCaracteres() {
+  /*  private fun setupContadorCaracteres() {
         val textWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 // Antes de alterar o texto
@@ -143,7 +143,7 @@ class ProductDetails : AppCompatActivity(), OnItemAddedListener  {
         }
 
         binding.editTextObs.addTextChangedListener(textWatcher)
-    }
+    }*/
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         // Inflate the menu

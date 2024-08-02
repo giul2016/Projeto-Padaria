@@ -50,7 +50,6 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
-                android:backgroundTint="@color/colorPrimary"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
                 app:layout_constraintEnd_toStartOf="@+id/cardContato"
@@ -72,7 +71,7 @@
                         android:layout_height="80dp"
                         android:layout_gravity="center_horizontal"
                         android:src="@drawable/icone_produtos" />
-                    />
+
 
                     <TextView
                         android:id="@+id/btnProd"
@@ -81,7 +80,7 @@
                         android:layout_gravity="center"
                         android:text="Produtos"
                         android:textAlignment="center"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="18dp"
                         android:textStyle="bold" />
                 </LinearLayout>

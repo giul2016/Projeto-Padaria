@@ -153,6 +153,16 @@ class ProdutosFragment : Fragment() , CategoriaClickListener, OnItemAddedListene
             binding.btnKebab.setBackgroundResource(R.drawable.bg_button_enable)
             updateRecyclerView("Kebab")
         }
+        binding.btnSorvetes.setOnClickListener {
+            handleButtonClick("Sorvetes")
+            binding.btnSorvetes.setBackgroundResource(R.drawable.bg_button_enable)
+            updateRecyclerView("Sorvetes")
+        }
+        binding.btnDoces.setOnClickListener {
+            handleButtonClick("Doces")
+            binding.btnDoces.setBackgroundResource(R.drawable.bg_button_enable)
+            updateRecyclerView("Doces")
+        }
 
     }
 
@@ -184,6 +194,8 @@ class ProdutosFragment : Fragment() , CategoriaClickListener, OnItemAddedListene
                 "Pães" -> productsListManager.paesaListFlow.collectData()
                 "Salgados" -> productsListManager.salgadoListFlow.collectData()
                 "Frios" -> productsListManager.friosListFlow.collectData()
+                "Sorvetes" -> productsListManager.sorvetesListFlow.collectData()
+                "Doces" -> productsListManager.docesListFlow.collectData()
                 else -> emptyList()
             }
 
@@ -211,6 +223,8 @@ class ProdutosFragment : Fragment() , CategoriaClickListener, OnItemAddedListene
             setButtonStyle(binding.btnPaes, Color.TRANSPARENT)
             setButtonStyle(binding.btnSalgados, Color.TRANSPARENT)
             setButtonStyle(binding.btnFrios, Color.TRANSPARENT)
+            setButtonStyle(binding.btnSorvetes, Color.TRANSPARENT)
+            setButtonStyle(binding.btnDoces, Color.TRANSPARENT)
 
             // Atualiza a visibilidade do RecyclerView
             binding.recyclerViewProdutos.visibility = View.VISIBLE

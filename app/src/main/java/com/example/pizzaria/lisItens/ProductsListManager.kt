@@ -19,6 +19,8 @@ class ProductsListManager {
     private val _esfihaList = MutableStateFlow<MutableList<Produto>>(mutableListOf())
     private val _salgadoList = MutableStateFlow<MutableList<Produto>>(mutableListOf())
     private val _friosList = MutableStateFlow<MutableList<Produto>>(mutableListOf())
+    private val _sorveteList = MutableStateFlow<MutableList<Produto>>(mutableListOf())
+    private val _docesList = MutableStateFlow<MutableList<Produto>>(mutableListOf())
 
     val pizzaListFlow: StateFlow<MutableList<Produto>> = _pizzaList
     val assadosListFlow: StateFlow<MutableList<Produto>> = _assadosList
@@ -29,6 +31,8 @@ class ProductsListManager {
     val esfihaListFlow: StateFlow<MutableList<Produto>> = _esfihaList
     val salgadoListFlow: StateFlow<MutableList<Produto>> = _salgadoList
     val friosListFlow: StateFlow<MutableList<Produto>> =_friosList
+    val sorvetesListFlow: StateFlow<MutableList<Produto>> =_sorveteList
+    val docesListFlow: StateFlow<MutableList<Produto>> =_docesList
 
 
     fun initializeLists() {
@@ -41,6 +45,8 @@ class ProductsListManager {
         _paesList.value=createPaesList()
         _salgadoList.value=createSalgadoList()
         _friosList.value=createFriosList()
+        _sorveteList.value=createSorveteList()
+        _docesList.value=createDocesList()
     }
 
     private fun createPizzaList(): MutableList<Produto> {
@@ -205,20 +211,52 @@ class ProductsListManager {
             //
         )
     }
+    private fun createSorveteList(): MutableList<Produto> {
+        // Adicione produtos Pizza conforme necessário
+        return mutableListOf(
+            Produto(R.drawable.sorv_pal_morango_1, "Morango", 5.00, "Sorvetes","Sorvete no palito sabor morango"),
+            Produto(R.drawable.sorv_pal_especial_2, "Especial", 10.00, "Sorvetes","Sorvete de sabores especiais no palito"),
+            Produto(R.drawable.sorv_pal_maracuja_3, "Maracujá", 5.00, "Sorvetes","Sorvete no palito sabor maracujá"),
+            Produto(R.drawable.sorv_pal_limao_4, "Limão", 5.00, "Sorvetes","Sorvete no palito sabor limão"),
+            Produto(R.drawable.sorv_pal_abacaxi_5, "Abacaxí", 5.00, "Sorvetes","Sorvete no palito sabor abacaxi"),
+            Produto(R.drawable.sorv_pot_morango_6, "Massa de Morango", 20.00, "Sorvetes","Sorvete de massa sabor morango"),
+            Produto(R.drawable.sorv_pot_napolitano_7, "Massa Napolitano", 25.00, "Sorvetes","Sorvete de massa sabor napolitano"),
+            Produto(R.drawable.sorv_copo_passas_8, "Passas ao Rum", 20.00, "Sorvetes","Sorvete de massa sabor passas ao rum"),
+            Produto(R.drawable.sorv_pot_choco_9, "Chocolate Massa", 25.00, "Sorvetes","Sorvete de massa sabor chocolate"),
+            Produto(R.drawable.sorv_pot_coco_10, "Côco Massa", 25.00, "Sorvetes","Sorvete de massa sabor côco")
+            //
+        )
+    }
+    private fun createDocesList(): MutableList<Produto> {
+        // Adicione produtos Pizza conforme necessário
+        return mutableListOf(
+            Produto(R.drawable.doce_donut_1, "Donut", 8.00, "Doces","Donut coberto de chocolate com recheios especiais"),
+            Produto(R.drawable.doce_torta_morango_2, "Torta de Morango", 18.00, "Doces","Deliciosa torta com recheio de geléia de morangos"),
+            Produto(R.drawable.doce_sonho_3, "Sonho", 5.00, "Doces","Delicioso somho açucarado com recheio de doce de leite ou creme"),
+            Produto(R.drawable.doce_cupcake_4, "CupCake", 9.00, "Doces","CapCake com chamtily e recheio de morango"),
+            Produto(R.drawable.doce_bomba_5, "Bomba de Chocolate", 10.00, "Doces","Delicioso doce trufado de chocolate"),
+            Produto(R.drawable.doce_bolo_aniver_6, "Bolo  De Aniversário", 20.00, "Doces","Bolo de diversos sabores recheado e com cobertura"),
+            Produto(R.drawable.doce_pudim_7, "Pudim", 25.00, "Doces","Pudim de leite condensado"),
+            Produto(R.drawable.doce_brigadeiro_8, "Brigadeiro", 3.00, "Doces","Tradicional brigadeiro de chocolate"),
+            Produto(R.drawable.doce_mousse_9, "Mousse de Maracujá", 25.00, "Doces","Tradicional Mousse de Maracujá"),
+            Produto(R.drawable.doce_rocambole_10, "Rocambole", 15.00, "Doces","Delicioso rocambole recheado com doce de leite")
+            //
+        )
+    }
 
     fun getAllProducts(): MutableList<Categoria> {
 
         return mutableListOf(
-            Categoria("Pizzas",R.drawable.categoria2),
             Categoria("Esfihas",R.drawable.categoria1),
-            Categoria("Pães",R.drawable.categoria7),
+            Categoria("Pizzas",R.drawable.categoria2),
             Categoria("Lanches",R.drawable.categoria3),
             Categoria("Salgados",R.drawable.categoria4),
             Categoria("Bebidas",R.drawable.categoria5),
             Categoria("Doces",R.drawable.categoria6),
+            Categoria("Pães",R.drawable.categoria7),
             Categoria("Assados",R.drawable.categoria8),
             Categoria("Sorvetes",R.drawable.categoria9),
-            Categoria("Frios",R.drawable.categoria10),
+            Categoria("Frios",R.drawable.categoria10)
         )
     }
 }

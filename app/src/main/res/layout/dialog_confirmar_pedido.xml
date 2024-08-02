@@ -28,41 +28,48 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-
-
     <EditText
         android:id="@+id/editTextEndereco"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="Endereço de Entrega" />
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_edit_text"
+        android:hint="Endereço de Entrega"
+        android:padding="4dp"
+        android:textSize="14sp" />
 
     <EditText
         android:id="@+id/editTextTelefone"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="36dp"
         android:layout_marginTop="8dp"
-        android:hint="Telefone" />
+        android:background="@drawable/bg_edit_text"
+        android:hint="Telefone"
+        android:inputType="phone"
+        android:padding="4dp"
+        android:textSize="14sp" />
 
     <EditText
         android:id="@+id/editTextNome"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Observação" />
+        android:layout_height="36dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_edit_text"
+        android:hint="Observação"
+        android:padding="4dp"
+        android:textSize="14sp" />
 
     <Button
         android:id="@+id/btnEnviarPedido"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
         android:backgroundTint="@color/green"
         android:text="Enviar Pedido"
         android:textColor="@color/white"
         app:iconTint="@color/white"
         />
-    />
+
 
 
 

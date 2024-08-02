@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Product Details"
+        app:title="Detalhes do Produto"
         app:titleTextColor="@android:color/white" />
 
     <ImageView
@@ -154,32 +154,11 @@
             android:layout_weight="1"
             android:ems="100"
             android:gravity="right"
-            android:text="0/140"
+            android:text=""
             android:textSize="18sp" />
 
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/editTextObs"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="4dp"
-        android:gravity="start"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="10dp"
-        android:padding="4dp"
-        android:textSize="18dp"
-        android:background="@drawable/bg_edit_text"
-        android:hint="Ex: Tirar cebola, maionese a parte, ponto da carne etc."
-        android:inputType="textMultiLine"
-        android:maxLines="3"
-        android:maxLength="140"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.157"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -206,6 +185,20 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/editTextObs"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="8dp"
+        android:text=""
+        android:textAlignment="center"
+        android:hint="Você poderá adicioná-la\n ao finalizar o seu pedido"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

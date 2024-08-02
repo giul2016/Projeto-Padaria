@@ -8,6 +8,7 @@
     android:orientation="vertical">
 
     <androidx.appcompat.widget.SearchView
+        android:id="@+id/buscar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:queryHint="Search"
@@ -34,7 +35,7 @@
                     android:text="Categorias"
                     android:padding="3dp"
                     android:textColor="@color/dark_gray"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/bg_button_disabled"
                     android:layout_marginTop="10dp"
                     android:layout_marginHorizontal="10dp"
@@ -134,6 +135,28 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/bg_button_disabled"
                     android:text="Bebidas"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="18sp" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSorvetes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_button_disabled"
+                    android:text="Sorvetes"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="18sp" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnDoces"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_button_disabled"
+                    android:text="Doces"
                     android:textColor="@color/dark_gray"
                     android:textSize="18sp" />
 
